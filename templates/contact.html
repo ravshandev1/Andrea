@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id="colorlib-main">
+        <section class="ftco-section contact-section px-md-4">
+            <div class="container">
+                <div class="row d-flex mb-5 contact-info">
+                    <div class="col-md-12 mb-4">
+                        <h2 class="h3">Contact Information</h2>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-lg-6 col-xl-3 d-flex mb-4">
+                        <div class="info bg-light p-4">
+                            <p><span>Address:</span> 54 Mirzo Ulugbek Avenue, Tashkent, Uzbekistan</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3 d-flex mb-4">
+                        <div class="info bg-light p-4">
+                            <p><span>Phone:</span> <a href="tel://1234567920">+998 99 882 60 60</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3 d-flex mb-4">
+                        <div class="info bg-light p-4">
+                            <p><span>Email:</span> <a
+                                    href="https://preview.colorlib.com/cdn-cgi/l/email-protection#462f282029063f293334352f32236825292b"><span
+                                    class="__cf_email__" data-cfemail="a0c9cec6cfe0d9cfd5d2d3c9d4c58ec3cfcd">ravshan2002@gmail.com</span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3 d-flex mb-4">
+                        <div class="info bg-light p-4">
+                            <p><span>Website</span> <a href="https://isystem.uz/">isystem.uz</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row block-9">
+                    <div class="col-lg-6 d-flex">
+                        <form method="post" class="bg-light p-5 contact-form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ form.name }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.email }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.subject }}
+                            </div>
+                            <div class="form-group">
+                                {{ form.message }}
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-6 d-flex">
+                        <div id="map" class="bg-light"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

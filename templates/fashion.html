@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id="colorlib-main">
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row px-md-4">
+                    {% for post in posts %}
+                        <div class="col-md-12">
+                        <div class="blog-entry ftco-animate d-md-flex">
+                            <a href="{% url 'post:blog-single' post.id %}" class="img img-2"
+                               style="background-image:url({{ post.image.url }})"></a>
+                            <div class="text text-2 pl-md-4">
+                                <h3 class="mb-2"><a href="{% url 'post:blog-single' post.id %}">{{ post.title|slice:'150' }}</a></h3>
+                                <div class="meta-wrap">
+                                    <p class="meta">
+                                        <span><i class="icon-calendar mr-2"></i>{{ post.created_at }}</span>
+                                        <span><a href="single.html"><i class="icon-folder-o mr-2"></i>{{ post.category }}</a></span>
+                                        <span><i class="icon-comment2 mr-2"></i>{{ post.comment_set.count }} Comment</span>
+                                    </p>
+                                </div>
+                                <p class="mb-4">{{ post.content|slice:'170' }}</p>
+                                <p><a href="{% url 'post:blog-single' post.id %}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="row">
+                    <div class="col text-center text-md-left">
+                        <div class="block-27">
+                            <ul>
+                                <li><a href="#">&lt;</a></li>
+                                <li class="active"><span>1</span></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">&gt;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}
