@@ -28,11 +28,11 @@
             <a class="blog-img mr-4"
                style="background-image:url({{ last_post.image.url }})"></a>
             <div class="text">
-                <h3 class="heading"><a href="#">{{ last_post.title|slice:'100'}}</a></h3>
+                <h3 class="heading"><a href="{% url 'post:blog-single' last_post.id %}">{{ last_post.title|slice:'100'}}</a></h3>
                 <div class="meta">
-                    <div><a href="#"><span class="icon-calendar"></span> {{ last_post.created_at|date:'F' }} {{ last_post.created_at|date:'d' }} {{ last_post.created_at|date:'Y' }}</a></div>
-                    <div><a href="#"><span class="icon-person"></span> {{ last_post.author_name }}</a></div>
-                    <div><a href="#"><span class="icon-chat"></span> {{ last_post.comment_set.count }}</a></div>
+                    <div><span class="icon-calendar"></span> {{ last_post.created_at|date:'F' }} {{ last_post.created_at|date:'d' }} {{ last_post.created_at|date:'Y' }}</div>
+                    <div><span class="icon-person"></span> {{ last_post.author_name }}</div>
+                    <div><span class="icon-chat"></span> {{ last_post.comment_set.count }}</div>
                 </div>
             </div>
         </div>
