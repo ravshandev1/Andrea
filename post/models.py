@@ -29,6 +29,7 @@ class Post(models.Model):
     type = models.IntegerField(choices=TYPE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='posts')
+    views = models.IntegerField(default=0)
     tags = models.ManyToManyField(Tag, blank=True)
     content = models.TextField()
     author_name = models.CharField(max_length=255)

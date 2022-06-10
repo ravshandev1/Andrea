@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import *
 from contact.models import Subscribe
 from .forms import CommentForm
@@ -28,15 +28,8 @@ def home(request):
 
 def blog_single(request, pk):
     post = Post.objects.get(id=pk)
-    s = request.GET.get('s')
-    if s:
-        posts = Post.objects.filter(title__icontains=s)
-    t = request.GET.get('t')
-    if t:
-        posts = Post.objects.filter(tags__tag__exact=t)
-    c = request.GET.get('c')
-    if c:
-        posts = Post.objects.filter(category__category__exact=c)
+    post.views += 1
+    post.save()
     form = CommentForm(request.POST or None, request.FILES)
     if form.is_valid():
         commit = form.save(commit=False)
@@ -63,15 +56,6 @@ def travel(request):
     q = request.GET.get('q')
     if q:
         posts = Post.objects.filter(author_name=q)
-    s = request.GET.get('s')
-    if s:
-        posts = Post.objects.filter(title__icontains=s)
-    t = request.GET.get('t')
-    if t:
-        posts = Post.objects.filter(tags__tag__exact=t)
-    c = request.GET.get('c')
-    if c:
-        posts = Post.objects.filter(category__category__exact=c)
     ctx = {
         'posts': posts
     }
